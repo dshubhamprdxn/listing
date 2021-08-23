@@ -1,0 +1,77 @@
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.items li {
+  background: #bbb;
+  margin: 10px auto;
+  padding: 10px;
+  flex-basis: 15%;
+  box-shadow: -1px 5px 7px 1px rgba(164, 164, 164, 0.15);
+  border: 2px solid #e7e7e7;
+  border-radius: 10px;
+  animation: 0.5s fade ease-in-out;
+}
+
+.items li h3, .items li p,.items li span { font-size: 20px; }
+.items li p { margin-bottom: 10px; }
+
+.items span {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.items .gender figure {
+  display: inline-block;
+}
+
+.pagination {
+  margin: 20px auto 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination li {
+  cursor: pointer;
+}
+
+.pagination a {
+  outline: none;
+  padding: 5px 10px;
+  color: #888;
+  font-size: 15px;
+  font-weight: bold;
+  background: #f0f0f0;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.pagination a.active {
+  border: none;
+  background: none;
+  color: #666;
+}
+
+.pagination a:hover {
+  text-decoration: none;
+  background: #e0e0e0;
+}
+
+@media only screen and (max-width: 768px) {
+  .items li {
+    flex-basis: 45%;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .items li {
+    flex-basis: 90%;
+  }
+}

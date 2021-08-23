@@ -1,0 +1,17 @@
+header {
+  background: #8f5c2c;
+}
+
+header h1,
+header h1 a {
+  color: #fff;
+  margin: 0 auto;
+  display: flex;
+  align-self: center;
+  font-size: 22px;
+}
+
+header .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
