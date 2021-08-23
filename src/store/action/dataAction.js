@@ -21,7 +21,7 @@ export const fetchDataFail = (error) => {
   }
 }
 
-export const fetchDataStart = (currentPage, PER_PAGE = 5) => {
+export const fetchDataStart = (currentPage, PER_PAGE = 20) => {
   return dispatch => {
     dispatch(requestingData());
     axios.get('https://www.anapioficeandfire.com/api/characters?page=' + currentPage + '&pageSize='+PER_PAGE)

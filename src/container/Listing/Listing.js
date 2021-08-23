@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import Item from '../../component/Item/Item';
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate';
 
-import { connect } from 'react-redux'
-import * as actionCreators from '../../store/action/dataAction'
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/action/dataAction';
 import Spinner from '../../component/Spinner/Spinner';
 
-import './Listing.css'
+import './Listing.css';
 
 class Listing extends Component {
-  state = {
-    data: [],
-    currentPage: 0,
-    pageCount: 0
-  }
 
   componentDidMount () {
     this.props.onfetchDataStart(this.props.currentPage)
@@ -27,10 +21,7 @@ class Listing extends Component {
   
   render() {
     let item;
-    if (this.props.error) {
-      item = this.props.error ? <p>{this.props.error}</p> : <Spinner />;
-    }
-
+    let data = this.props.error ? <p>{this.props.error}</p>: null
     if (this.props.data) {
       item = this.props.data.map( (item, index) => {
         return (<Item 
@@ -45,29 +36,32 @@ class Listing extends Component {
     }
     
     return (
-      <div className="wrapper">
-        {this.props.loading === null || this.props.loading === true ?
-          <Spinner />:
-        <ul className="items">
-          {item}
-        </ul>
-        }
-        
-        {this.props.data.length > 0 ? 
-          <ReactPaginate 
-          previousLabel={"<<"}
-          nextLabel={">>"}
-          pageCount={this.props.totalPageCount}
-          onPageChange={(e) => this.handlePageClick(e)}
-          breakLabel="..."
-          containerClassName={"pagination"}
-          previousLinkClassName={"pagination__link"}
-          nextLinkClassName={"pagination__link"}
-          disabledClassName={"pagination__link--disabled"}
-          activeLinkClassName={"active"}
-          />
-        : null}
-      </div>
+      <section>
+        <div className="wrapper">
+          {data}
+          {this.props.loading === null || this.props.loading === true ?
+            <Spinner /> :
+            <ul className="items">
+              {item}
+            </ul>
+          }
+          
+          {this.props.data.length > 0 ? 
+            <ReactPaginate 
+            previousLabel={"<<"}
+            nextLabel={">>"}
+            pageCount={this.props.totalPageCount}
+            onPageChange={(e) => this.handlePageClick(e)}
+            breakLabel="..."
+            containerClassName={"pagination"}
+            previousLinkClassName={"pagination__link"}
+            nextLinkClassName={"pagination__link"}
+            disabledClassName={"pagination__link--disabled"}
+            activeLinkClassName={"active"}
+            />
+          : null}
+        </div>
+      </section>
     )
   }
 }

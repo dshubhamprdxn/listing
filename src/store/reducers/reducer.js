@@ -44,8 +44,9 @@ const reducer = (state = initialState, action) => {
         currentPage: action.currentPage,
         error: '',
       }
+    default:
+      return state
   }
-  return state;
 }
 
 export default reducer

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './store/reducers/reducer';
@@ -15,7 +17,9 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
